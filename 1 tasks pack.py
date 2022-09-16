@@ -72,5 +72,3 @@ def seventh_task():
     for root, dirs, files in os.walk(path):
         for filename in files:
             print(root+filename)
-
-
