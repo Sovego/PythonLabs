@@ -31,7 +31,7 @@ def third_task():
     print("Volume is: ", volume)
 
 
-def four_def():
+def four_task():
     year = int(input("Input Year: "))
     if year % 4 != 0 or (year % 100 == 0 and year % 400 != 0):
         print("Regular")
@@ -39,7 +39,7 @@ def four_def():
         print("Leap")
 
 
-def fifth_def():
+def fifth_task():
     n = int(input("Input N: "))
     a = []
     for i in range(n + 1):
