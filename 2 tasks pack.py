@@ -60,7 +60,28 @@ def sixth_task():
     file = open("input.txt", "r")
     stri = file.read()
     word_list = stri.split(" ")
-    print("Word count: ", len(word_list))
-    #print("Char count: ",sum([b for b in [len(a for a in word_list)]]))
+    abc_count = 0
+    print("Words count: ", len(word_list))
+    for a in stri:
+        if a.isalpha:
+            abc_count += 1
+    print("Letters count: ", abc_count)
+    print("Strings count: ", stri.count("\n"))
 
-sixth_task()
+
+def generator(n, q, x):
+    for i in range(n):
+        yield x
+        x*=q
+
+
+
+def seventh_task():
+    x = int(input("Input first number: "))
+    q = int(input("Input generator step: "))
+    n = int(input("Input count of elements: "))
+    res = list(generator(n, q, x))
+    print(res)
+
+
+seventh_task()
