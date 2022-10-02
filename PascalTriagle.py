@@ -1,11 +1,13 @@
 import argparse
 
+
 def console_parser():
     """Console Parse"""
     parser = argparse.ArgumentParser(description="List size parser")
     parser.add_argument("-n", dest="n", required=True, type=int)
     args = parser.parse_args()
     return args
+
 
 def pascal_triagle():
     args = console_parser()

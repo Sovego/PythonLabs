@@ -27,9 +27,10 @@ def bubble_sort():
     for i in range(args.n):
         for j in range(args.n):
             if a[i] < a[j]:
-                c = a[i]
-                a[i] = a[j]
-                a[j] = c
+                a[i],a[j] = a[j], a[i]
+                #c = a[i]
+                #a[i] = a[j]
+                #a[j] = c
     """Print sorted list"""
     print(a)
 
