@@ -61,3 +61,69 @@ class Item:
         a = self.count
         a *= other
         return self.update_count(a)
+
+
+class Apple(Item):
+    def __init__(self, count=1, max_count=32, saturation=10):
+        super().__init__(count, max_count)
+        self._saturation = saturation
+
+
+class Melon(Item):
+    def __init__(self, count=1, max_count=32, saturation=20):
+        super().__init__(count, max_count)
+        self._saturation = saturation
+
+
+class Bread(Item):
+    def __init__(self, count=1, max_count=32, saturation=5):
+        super().__init__(count, max_count)
+        self._saturation = saturation
+
+
+class Meat(Item):
+    def __init__(self, count=1, max_count=32, saturation=50):
+        super().__init__(count, max_count)
+        self._saturation = saturation
+
+
+class Inventory:
+    def __init__(self, length=10):
+        self._list = []
+        for i in range(10):
+            self._list.append(None)
+
+    def __getitem__(self, index):
+        if index > len(self._list):
+            raise IndexError(f'Index {index} more then {len(self._list)}')
+        return self._list[index]
+
+    def __setitem__(self, index, item):
+        if index > len(self._list):
+            raise IndexError(f'Index {index} more then {len(self._list)}')
+        self._list[index] = item
+        return self
+
+    def takeitem(self, index, count):
+        if index > len(self._list):
+            raise IndexError(f'Index {index} more then {len(self._list)}')
+        if self._list[index].Item < count:
+            raise Exception(f'Count {count} more then {self._list[index].Item.count}')
+        self._list[index].Item -= count
+        if self._list[index].Item == 0:
+            self._list[index] = None
+
+
+class Deque:
+    def __init__(self):
+        self._deque = []
+
+    def __getitem__(self):
+        return self._deque.pop(0)
+
+    def __setitem__(self, value):
+        self._deque.append(value)
+
+    @property
+    def get_list(self):
+        return self._deque
