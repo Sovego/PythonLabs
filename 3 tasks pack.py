@@ -126,4 +126,4 @@ class Deque:
 
     @property
     def get_list(self):
-        return self._deque
+        return self._deque.copy
