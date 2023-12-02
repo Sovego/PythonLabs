@@ -5,8 +5,7 @@ def console_parser():
     """Console Parse"""
     parser = argparse.ArgumentParser(description="List size parser")
     parser.add_argument("-n", dest="n", required=True, type=int)
-    args = parser.parse_args()
-    return args
+    return parser.parse_args()
 
 
 def pascal_triagle():
@@ -14,18 +13,14 @@ def pascal_triagle():
     line = [1]
     tmp = []
     """Generating numbers"""
-    for i in range(args.n):
+    for _ in range(args.n):
         tmp += [line]
-        nxt = []
-        for j in range(len(line) - 1):
-            nxt += [line[j] + line[j + 1]]
+        nxt = [line[j] + line[j + 1] for j in range(len(line) - 1)]
         line = [1] + nxt + [1]
     """Generating strings for output"""
     str_arr = []
     for i in range(args.n):
-        line = ""
-        for j in range(len(tmp[i])):
-            line += str(tmp[i][j]) + " "
+        line = "".join(f"{str(tmp[i][j])} " for j in range(len(tmp[i])))
         str_arr += [line]
     """Print strings"""
     length_max = len(str_arr[args.n - 1]) - 1

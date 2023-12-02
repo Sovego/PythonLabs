@@ -7,8 +7,7 @@ def console_parser():
     parser = argparse.ArgumentParser(description="File Path")
     parser.add_argument("-i", dest="input", required=True, type=str)
     parser.add_argument("-o", dest="output", required=True, type=str)
-    args = parser.parse_args()
-    return args
+    return parser.parse_args()
 
 
 def read_matrix(args):

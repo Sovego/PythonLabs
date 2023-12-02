@@ -20,7 +20,7 @@ def second_task():
 
 
 def third_task():
-    a_list = [random.randint(0, 10000) for i in range(205)]
+    a_list = [random.randint(0, 10000) for _ in range(205)]
     even = 0
     odd = 0
     for a in a_list:
@@ -40,37 +40,31 @@ def four_task():
     print(dictionary)
     stri = input("Input string: ")
     word_list = stri.split(" ")
-    out_str = ""
-    for word in word_list:
-        if dictionary.get(word) is None:
-            out_str += word + " "
-        else:
-            out_str += str(dictionary.get(word)) + " "
+    out_str = "".join(
+        f"{word} "
+        if dictionary.get(word) is None
+        else f"{str(dictionary.get(word))} "
+        for word in word_list
+    )
     print(out_str)
 
 
 def fib(n):
-    if n <= 1:
-        return n
-    else:
-        return fib(n - 1) + fib(n - 2)
+    return n if n <= 1 else fib(n - 1) + fib(n - 2)
 
 
 def sixth_task():
     file = open("input.txt", "r")
     stri = file.read()
     word_list = stri.split(" ")
-    abc_count = 0
     print("Words count: ", len(word_list))
-    for a in stri:
-        if a.isalpha:
-            abc_count += 1
+    abc_count = sum(1 for a in stri if a.isalpha)
     print("Letters count: ", abc_count)
     print("Strings count: ", stri.count("\n"))
 
 
 def generator(n, q, x):
-    for i in range(n):
+    for _ in range(n):
         yield x
         x*=q
 

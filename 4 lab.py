@@ -10,8 +10,7 @@ def console_parser():
     parser.add_argument("-f", dest="input", required=True, type=str)
     parser.add_argument("-s", dest="input2", required=True, type=str)
     parser.add_argument("-p", dest="p", required=True, type=float)
-    args = parser.parse_args()
-    return args
+    return parser.parse_args()
 
 
 def read_matrix(args):
@@ -46,16 +45,16 @@ def choice_element_2(first_matrix_element, second_matrix_element):
     else:
         first_p = first_matrix_p
         second_p = second_matrix_p
-    if 0 <= a <= first_p:
-        if first_p == first_matrix_p:
-            return first_matrix_element
-        else:
-            return second_matrix_element
-    elif first_p <= a <= second_p:
-        if second_p == second_matrix_p:
-            return second_matrix_element
-        else:
-            return first_matrix_element
+    if (
+        0 <= a <= first_p
+        and first_p == first_matrix_p
+        or not 0 <= a <= first_p
+        and first_p <= a <= second_p
+        and second_p != second_matrix_p
+    ):
+        return first_matrix_element
+    elif 0 <= a <= first_p or first_p <= a <= second_p:
+        return second_matrix_element
     if a >= second_p:
         if second_p == second_matrix_p:
             return second_matrix_element

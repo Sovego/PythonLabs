@@ -6,16 +6,12 @@ def console_parser():
     """Console Parse"""
     parser = argparse.ArgumentParser(description="List size parser")
     parser.add_argument("-n", dest="n", required=True, type=int)
-    args = parser.parse_args()
-    return args
+    return parser.parse_args()
 
 
 def number_generator(args):
     """Generate random numbers"""
-    a = []
-    for x in range(args.n):
-        a.append(random.random())
-    return a
+    return [random.random() for _ in range(args.n)]
 
 
 def bubble_sort():

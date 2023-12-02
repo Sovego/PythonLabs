@@ -89,9 +89,7 @@ class Meat(Item):
 
 class Inventory:
     def __init__(self, length=10):
-        self._list = []
-        for i in range(10):
-            self._list.append(None)
+        self._list = [None for _ in range(10)]
 
     def __getitem__(self, index):
         if index > len(self._list):
