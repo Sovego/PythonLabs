@@ -9,7 +9,7 @@ def first_task():
     while a > 0:
         digit = a % 10
         suma = suma + digit
-        a = a // 10
+        a //= 10
     print(suma)
 
 
@@ -19,7 +19,7 @@ def second_task():
     while a > 0:
         digit = a % 10
         suma = suma + digit
-        a = a // 10
+        a //= 10
     print(suma)
 
 
@@ -41,18 +41,14 @@ def four_task():
 
 def fifth_task():
     n = int(input("Input N: "))
-    a = []
-    for i in range(n + 1):
-        a.append(i)
+    a = list(range(n + 1))
     a[1] = 0
-    i = 2
-    while i <= n:
+    for i in range(2, n + 1):
         if a[i] != 0:
             j = i + i
             while j <= n:
                 a[j] = 0
                 j = j + i
-        i += 1
     a = set(a)
     a.remove(0)
     print(a)
@@ -61,7 +57,7 @@ def fifth_task():
 def sixth_task():
     balance = int(input("Input Balance: "))
     deadline = int(input("Input Deadline: "))
-    for x in range(deadline):
+    for _ in range(deadline):
         a = balance / 100 * 10
         balance += a
     print("Total balance: ", balance)

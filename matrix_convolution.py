@@ -6,8 +6,7 @@ def console_parser():
     parser = argparse.ArgumentParser(description="File Path")
     parser.add_argument("-i", dest="input", required=True, type=str)
     parser.add_argument("-o", dest="output", required=True, type=str)
-    args = parser.parse_args()
-    return args
+    return parser.parse_args()
 
 
 def read_matrix(args):
@@ -44,18 +43,16 @@ def matrix_validate(first_matrix, second_matrix):
 def matrix_convolution(first_matrix, second_matrix):
     """Matrix convolution. Second matrix is a core"""
     shiftX = -1
-    shiftY = -1
     row_first_matrix = len(first_matrix[0])
     string_first_matrix = len(first_matrix)
     row_second_matrix = len(second_matrix[0])
     string_second_matrix = len(second_matrix)
-    res_matrix = [[0 for i in range(row_first_matrix - row_second_matrix + 1)] for j in
-                  range(string_first_matrix - string_second_matrix + 1)]
-    for i in range(0, (string_first_matrix - string_second_matrix + 1)):
-        shiftY += 1
-        shiftX = -1
-        for j in range(0, row_first_matrix - row_second_matrix + 1):
-            shiftX += 1
+    res_matrix = [
+        [0 for _ in range(row_first_matrix - row_second_matrix + 1)]
+        for _ in range(string_first_matrix - string_second_matrix + 1)
+    ]
+    for shiftY, i in enumerate(range(0, (string_first_matrix - string_second_matrix + 1))):
+        for shiftX, j in enumerate(range(0, row_first_matrix - row_second_matrix + 1)):
             for q in range(i, string_second_matrix + i):
                 for k in range(j, row_second_matrix + i):
                     res_matrix[i][j] += (first_matrix[q][k] * second_matrix[q - shiftY][k - shiftX])

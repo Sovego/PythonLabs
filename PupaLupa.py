@@ -8,8 +8,7 @@ def read_matrix(file_name):
             if s == '\n':
                 break
             strs_1.append(s)
-    first_matrix = [list(map(int, row.split())) for row in strs_1]
-    return first_matrix
+    return [list(map(int, row.split())) for row in strs_1]
 
 
 class Pupa:
